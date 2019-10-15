@@ -5,22 +5,25 @@ import shutil, kafka, logging, time, datetime
 def main_loop():
     files = []
     print('Streams initiated...')
-    while True:
-        consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
-        for message in consumer_received:
-            str_message = bytes.decode(message.value)
-            print(str_message)
-            #if its stupid but it works...  well this is still stupid
-            filename = str(str_message.split(': ')[1:])
-            filename = filename.replace("'", '')
-            filename = filename.replace('[', '')
-            filename = filename.replace(']', '')
-            files.append(filename)
+    try:
+        while True:
+            consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
+            for message in consumer_received:
+                str_message = bytes.decode(message.value)
+                print(str_message)
+                #if its stupid but it works...  well this is still stupid
+                filename = str(str_message.split(': ')[1:])
+                filename = filename.replace("'", '')
+                filename = filename.replace('[', '')
+                filename = filename.replace(']', '')
+                files.append(filename)
 
-            if len(files) == 2:
-                get_files(files)
-                files = []
-
+                if len(files) == 2:
+                    get_files(files)
+                    files = []
+    except Exception as e:
+        print('Stream timed out, restarting...')
+        pass
 
 def get_files(files):
     for file in files:
