@@ -25,6 +25,9 @@ RUN mkdir /root/processed
 RUN chmod 777 /root/processed
 
 
+RUN ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 #install pre-reqs
 RUN apt-get update
 RUN apt-get install -y libfreetype6-dev libpng-dev gcc g++ wget dkms grub2 make python3 python3-dev python3-tk
