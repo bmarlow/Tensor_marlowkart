@@ -31,28 +31,14 @@ RUN ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
 #install pre-reqs
 RUN apt-get update
-RUN apt-get install -y pkg-config libfreetype6-dev libpng-dev gcc g++ wget dkms make python3 python3-dev python3-tk python3-pip
+RUN apt-get install -y pkg-config libfreetype6-dev libpng-dev gcc g++ wget dkms make python3 python3-dev python3-tk python3-pip vim
 
-#RUN yum -y install freetype-devel libpng gcc gcc-c++ wget epel-release dkms grub2 make centos-release-scl python3 python3-devel python3-tkinter shutil
-#RUN yum -y groupinstall 'Development Tools'
 
 
 #install python pre-reqs
 RUN pip3 install --upgrade pip
 RUN pip3 install numpy flask kafka app requests
 RUN pip3 install -r /root/reqs.txt
-
-
-
-
-#install cuda 10.0 libs
-#RUN wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux -O /root/cuda_10.0.130_410.48_linux --quiet
-#RUN sh /root/cuda_10.0.130_410.48_linux --silent --toolkit --toolkitpath=/usr/local/cuda-10.0
-
-#Get cudnn libs from NVIDIA
-#RUN wget https://www.dropbox.com/s/l5t159ily3m10sg/cudnn-10.0-linux-x64-v7.6.4.38.tgz?dl=0 -O /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz --quiet
-#RUN tar -C /usr/local/ -xzf /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz
-
 
 
 RUN wget https://www.dropbox.com/s/x0orqhrfihf6hsz/x.npy?dl=0 -O /root/tensor/data/X.npy --quiet
