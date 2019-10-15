@@ -77,7 +77,7 @@ def process_training_files(files):
 
 def send_file(file):
     uploadapiurl = 'http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/api-upload'
-    resultsbasepath = '/root/results/'
+    resultsbasepath = '/root/tensor/results/'
     resultsfullpath = resultsbasepath + str(file)
     myfile = {'file': open(resultsfullpath, 'rb')}
     response = requests.post(uploadapiurl, files=myfile)
