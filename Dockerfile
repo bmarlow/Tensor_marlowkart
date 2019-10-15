@@ -26,8 +26,11 @@ RUN chmod 777 /root/processed
 
 
 #install pre-reqs
-RUN yum -y install freetype-devel libpng gcc gcc-c++ wget epel-release dkms grub2 make centos-release-scl python3 python3-devel python3-tkinter shutil
-RUN yum -y groupinstall 'Development Tools'
+RUN apt-get update
+RUN apt-get install -y libfreetype6-dev libpng-dev gcc g++ wget dkms grub2 make python3 python3-dev shutil python3-tk
+
+#RUN yum -y install freetype-devel libpng gcc gcc-c++ wget epel-release dkms grub2 make centos-release-scl python3 python3-devel python3-tkinter shutil
+#RUN yum -y groupinstall 'Development Tools'
 
 
 #install python pre-reqs
