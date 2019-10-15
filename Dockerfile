@@ -16,6 +16,7 @@ ADD flask/app.py root/flask/
 ADD flask/main.py root/flask/
 RUN mkdir /root/tensor/data
 RUN chmod -R 777 /root/tensor
+RUN chmod -R 777 /root/flask
 
 RUN mkdir /root/tensor/downloads
 RUN chmod 777 /root/tensor/downloads
