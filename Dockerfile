@@ -26,7 +26,6 @@ RUN chmod 777 /root/processed
 
 
 RUN ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
-RUN dpkg-reconfigure -f noninteractive tzdata
 
 #install pre-reqs
 RUN apt-get update
