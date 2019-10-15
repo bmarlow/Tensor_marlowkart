@@ -49,8 +49,8 @@ RUN pip3 install -r /root/reqs.txt
 #RUN sh /root/cuda_10.0.130_410.48_linux --silent --toolkit --toolkitpath=/usr/local/cuda-10.0
 
 #Get cudnn libs from NVIDIA
-#RUN wget https://www.dropbox.com/s/l5t159ily3m10sg/cudnn-10.0-linux-x64-v7.6.4.38.tgz?dl=0 -O /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz --quiet
-#RUN tar -C /usr/local/ -xzf /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz
+RUN wget https://www.dropbox.com/s/l5t159ily3m10sg/cudnn-10.0-linux-x64-v7.6.4.38.tgz?dl=0 -O /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz --quiet
+RUN tar -C /usr/local/ -xzf /root/cudnn-10.0-linux-x64-v7.6.4.38.tgz
 
 
 

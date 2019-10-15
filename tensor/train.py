@@ -51,8 +51,8 @@ def create_model(keep_prob = 0.8):
 
 if __name__ == '__main__':
     # Load Training Data
-    x_train = np.load("/root/data/X.npy")
-    y_train = np.load("/root/data/y.npy")
+    x_train = np.load("/root/tensor/data/X.npy")
+    y_train = np.load("/root/tensor/data/y.npy")
 
     print(x_train.shape[0], 'train samples')
 
