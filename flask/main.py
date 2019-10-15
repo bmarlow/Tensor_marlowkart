@@ -56,40 +56,30 @@ def process_training_files(files):
     os.remove('/root/tensor/data/y.npy')
 
     #move results file to results
-    results_file = '/root/tensor/results/results--' + dt_string +'.h5'
-    shutil.move('/root/tensor/results/model_weights.h5', results_file)
+    long_results_filename = '/root/tensor/results/results--' + dt_string +'.h5'
+    short_results_filename = 'results--' + dt_string + '.h5'
+    shutil.move('/root/tensor/results/model_weights.h5', long_results_filename)
 
-    ###GRAB screen output?
-
-    ###GRAB file output and send back
-
-
-
-
-    #temp_file = open("/root/results/results--" + dt_string + '.txt', "w")
-    #temp_file.write("This is an empty results file")
-    #temp_file.close()
-    ###end stubout
-
-    send_file(results_file)
+    send_file(long_results_filename, short_results_filename)
     pass
 
 
-def send_file(file):
+def send_file(longfilename, shortfilename):
     #uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
     #myfile = {'file': open(file, 'rb')}
     #response = requests.post(uploadapiurl, files=myfile)
 
-    with open(file) as fp:
+    with open(longfilename) as fp:
         file_data = fp.read()
     response = http.request(
         'POST',
         'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload',
         fields={
-            'filefield': (file, file_data),
+            'filefield': (shortfilename, file_data),
         })
 
-    #json.loads(r.data.decode('utf-8'))['files']
+    #json.loads(response.data.decode('utf-8'))['files']
+
 
 
     if response.status_code == 201:
