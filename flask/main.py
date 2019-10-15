@@ -25,7 +25,7 @@ def main_loop():
 def get_files(files):
     for file in files:
         print('retrieving file from dropoff pod ' + file)
-        baseurl = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/"
+        baseurl = "http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/files/"
         url = baseurl + file
         dlpath = '/root/tensor/downloads/'
         dlpathwithfile = dlpath + file
@@ -76,7 +76,7 @@ def process_training_files(files):
 
 
 def send_file(file):
-    uploadapiurl = 'http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/api-upload'
+    uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
     resultsbasepath = '/root/tensor/results/'
     resultsfullpath = resultsbasepath + str(file)
     myfile = {'file': open(resultsfullpath, 'rb')}
