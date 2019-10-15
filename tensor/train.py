@@ -64,4 +64,4 @@ if __name__ == '__main__':
     model.compile(loss=customized_loss, optimizer=optimizers.adam())
     model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, shuffle=True, validation_split=0.1)
 
-    model.save_weights('model_weights.h5')
+    model.save_weights('/root/tensor/model_weights.h5')
