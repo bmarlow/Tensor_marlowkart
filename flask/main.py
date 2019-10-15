@@ -79,14 +79,14 @@ def send_file(longfilename, shortfilename):
                 'filefield': (shortfilename, file_data),
             })
 
-    except Exception as e:
+        if response.status_code == 201:
+            print('results file ' + file + ' successfully sent to dropoff pod')
+        else:
+            print('something went wrong, try again')
         pass
 
-    if response.status_code == 201:
-        print('results file ' + file + ' successfully sent to dropoff pod')
-    else:
-        print('something went wrong, try again')
-    pass
+    except Exception as e:
+        pass
 
 if __name__ == "__main__":
     main_loop()
