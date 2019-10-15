@@ -29,7 +29,7 @@ RUN ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
 #install pre-reqs
 RUN apt-get update
-RUN apt-get install -y libfreetype6-dev libpng-dev gcc g++ wget dkms make python3 python3-dev python3-tk
+RUN apt-get install -y libfreetype6-dev libpng-dev gcc g++ wget dkms make python3 python3-dev python3-tk python3-pip
 
 #RUN yum -y install freetype-devel libpng gcc gcc-c++ wget epel-release dkms grub2 make centos-release-scl python3 python3-devel python3-tkinter shutil
 #RUN yum -y groupinstall 'Development Tools'
