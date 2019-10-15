@@ -54,4 +54,4 @@ RUN wget https://www.dropbox.com/s/w7ckfpjac9ckkuw/y.npy?dl=0 -O /root/tensor/da
 
 
 
-CMD python3 - u /root/flask/main.py
+CMD python3 -u /root/flask/main.py
