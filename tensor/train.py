@@ -6,7 +6,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D
 from keras import optimizers
 from keras import backend as K
-from tensor.utils import Sample
+from utils import Sample
 
 # Global variable
 OUT_SHAPE = 5
