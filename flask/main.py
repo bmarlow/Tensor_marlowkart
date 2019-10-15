@@ -76,9 +76,23 @@ def process_training_files(files):
 
 
 def send_file(file):
-    uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
-    myfile = {'file': open(file, 'rb')}
-    response = requests.post(uploadapiurl, files=myfile)
+    #uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
+    #myfile = {'file': open(file, 'rb')}
+    #response = requests.post(uploadapiurl, files=myfile)
+
+    with open(file) as fp:
+        file_data = fp.read()
+    response = http.request(
+        'POST',
+        'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload',
+        fields={
+            'filefield': (file, file_data),
+        })
+
+    #json.loads(response.data.decode('utf-8'))['files']
+
+
+
     if response.status_code == 201:
         print('results file ' + file + ' successfully sent to dropoff pod')
     else:
