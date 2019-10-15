@@ -26,9 +26,9 @@ RUN chmod 777 /root/tensor/processed
 
 RUN apt-get -y install vim
 
-RUN wget https://www.dropbox.com/s/x0orqhrfihf6hsz/x.npy?dl=0 -O /root/tensor/data/X.npy --quiet
-RUN wget https://www.dropbox.com/s/w7ckfpjac9ckkuw/y.npy?dl=0 -O /root/tensor/data/y.npy --quiet
 
+RUN wget https://www.dropbox.com/s/lgn310zvv480lge/X.npy?dl=0 -O /root/tensor/data/X.npy
+RUN wget  https://www.dropbox.com/s/rfj6x3k442rf988/y.npy?dl=0 -O /root/tensor/data/y.npy
 
 
 CMD python3 -u /root/flask/main.py
