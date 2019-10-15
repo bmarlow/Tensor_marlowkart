@@ -22,7 +22,7 @@ RUN chmod 777 /root/tensor/downloads
 RUN mkdir /root/results
 RUN chmod 777 /root/results
 RUN mkdir /root/tensor/processing
-RUN chmod 777 /root/processing
+RUN chmod 777 /root/tensor/processing
 RUN mkdir /root/tensor/processed
 RUN chmod 777 /root/tensor/processed
 
