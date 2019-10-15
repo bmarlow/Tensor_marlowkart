@@ -80,7 +80,7 @@ def send_file(file):
     #myfile = {'file': open(file, 'rb')}
     #response = requests.post(uploadapiurl, files=myfile)
 
-    with open('example.txt') as fp:
+    with open(file) as fp:
         file_data = fp.read()
     response = http.request(
         'POST',
