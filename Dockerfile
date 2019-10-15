@@ -1,4 +1,5 @@
-FROM nvidia/cuda:latest
+FROM tensorflow/tensorflow:latest-gpu
+#FROM nvidia/cuda:latest
 
 #add my files
 ADD reqs.txt /root
