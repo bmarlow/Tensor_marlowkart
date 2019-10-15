@@ -53,7 +53,6 @@ RUN pip3 install -r /root/reqs.txt
 
 
 
-RUN mkdir /root/tensor/data
 RUN wget https://www.dropbox.com/s/x0orqhrfihf6hsz/x.npy?dl=0 -O /root/tensor/data/X.npy --quiet
 RUN wget https://www.dropbox.com/s/w7ckfpjac9ckkuw/y.npy?dl=0 -O /root/tensor/data/y.npy --quiet
 
