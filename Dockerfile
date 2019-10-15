@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu
+FROM quay.io/bmarlow/brandon-tensorflow:latest
 
 RUN chmod 777 /root/
 RUN mkdir /root/tensor
