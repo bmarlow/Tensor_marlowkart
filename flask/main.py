@@ -49,7 +49,7 @@ def process_training_files(files):
 
     #issue ML commands
     #####JUST A STUBOUT
-    subprocess.run('/root/tensor/train.py')
+    subprocess.run('/root/tensor/train.py', shell=True)
 
     #delete old files
     os.remove('/root/tensor/data/X.npy')
