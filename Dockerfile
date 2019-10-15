@@ -2,6 +2,7 @@ FROM nvidia/cuda:latest
 
 #add my files
 ADD reqs.txt /root
+RUN chmod 777 /root/
 RUN mkdir /root/tensor
 ADD tensor/play.py /root/tensor/
 ADD tensor/record.py /root/tensor/
