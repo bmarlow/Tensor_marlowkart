@@ -27,7 +27,7 @@ def get_files(files):
         print('retrieving file from dropoff pod ' + file)
         baseurl = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/"
         url = baseurl + file
-        dlpath = '/root/downloads/'
+        dlpath = '/root/tensor/downloads/'
         dlpathwithfile = dlpath + file
         r = requests.get(url)
         open(dlpathwithfile, 'wb').write(r.content)
@@ -37,8 +37,8 @@ def get_files(files):
 
 
 def process_training_files(files):
-    dlpath = '/root/downloads/'
-    processingpath = '/root/data/'
+    dlpath = '/root/tensor/downloads/'
+    processingpath = '/root/tensor/data/'
     for file in files:
         shutil.move(dlpath + file, processingpath + file)
 
@@ -51,6 +51,13 @@ def process_training_files(files):
     #####JUST A STUBOUT
     subprocess.run('/root/tensor/train.py')
 
+    #delete old files
+    os.remove('/root/tensor/data/X.npy')
+    os.remove('/root/tensor/data/y.npy')
+
+    #move results file to results
+    results_file = '/root/tensor/results/results' + dt_string +'.h5'
+    shutil.move('/root/tensor/model_weights.h5', results_file)
 
     ###GRAB screen output?
 
@@ -59,10 +66,9 @@ def process_training_files(files):
 
 
 
-    temp_file = open("/root/results/results--" + dt_string + '.txt', "w")
-    temp_file.write("This is an empty results file")
-    temp_file.close()
-    results_file = 'results--' + dt_string + '.txt'
+    #temp_file = open("/root/results/results--" + dt_string + '.txt', "w")
+    #temp_file.write("This is an empty results file")
+    #temp_file.close()
     ###end stubout
 
     send_file(results_file)
