@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM nvidia/cuda:latest
 
 #add my files
 ADD reqs.txt /root
