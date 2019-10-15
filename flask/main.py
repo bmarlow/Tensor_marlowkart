@@ -24,7 +24,7 @@ def main_loop():
 
 def get_files(files):
     for file in files:
-        print('retrieving file from dropoff pod ' + file)
+        print('Retrieving file from dropoff pod(this may take a minute): ' + file)
         baseurl = "http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/files/"
         url = baseurl + file
         dlpath = '/root/tensor/downloads/'
@@ -56,8 +56,8 @@ def process_training_files(files):
     os.remove('/root/tensor/data/y.npy')
 
     #move results file to results
-    results_file = '/root/tensor/results/results' + dt_string +'.h5'
-    shutil.move('/root/tensor/model_weights.h5', results_file)
+    results_file = '/root/tensor/results/results--' + dt_string +'.h5'
+    shutil.move('/root/tensor/results/model_weights.h5', results_file)
 
     ###GRAB screen output?
 
@@ -77,9 +77,7 @@ def process_training_files(files):
 
 def send_file(file):
     uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
-    resultsbasepath = '/root/tensor/results/'
-    resultsfullpath = resultsbasepath + str(file)
-    myfile = {'file': open(resultsfullpath, 'rb')}
+    myfile = {'file': open(file, 'rb')}
     response = requests.post(uploadapiurl, files=myfile)
     if response.status_code == 201:
         print('results file ' + file + ' successfully sent to dropoff pod')
