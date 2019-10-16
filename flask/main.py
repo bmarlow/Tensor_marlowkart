@@ -5,7 +5,7 @@ import shutil, kafka, logging, time, datetime
 
 def main_loop():
     files = []
-    print('Streams initiated...')
+    print('Connected to AMQ Streams...')
     try:
         while True:
             consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
@@ -71,7 +71,7 @@ def send_file(longfilename):
         url = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
 
         values = {'DB': 'photcat', 'OUT': 'csv', 'SHORT': 'short'}
-        files = {'upload_file': open(longfilename, 'rb')}
+        files = {'file': open(longfilename, 'rb')}
         r = requests.post(url, files=files, data=values)
 
         if r.status_code == '201':
