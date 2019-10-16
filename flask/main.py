@@ -73,8 +73,7 @@ def send_file(longfilename, shortfilename):
         #myfile = {'file': open(file, 'rb')}
         #response = requests.post(uploadapiurl, files=myfile)
 
-        with open(longfilename) as f:
-            response = request.post(uploadapiurl, files={shortfilename: f})
+        subprocess.run('/usr/bin/curl -F file=@' + longfilename + ' ' + uploadapiurl, shell=True )
 
 
         if response.status_code == 201:
