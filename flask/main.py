@@ -63,11 +63,11 @@ def process_training_files(files):
     short_results_filename = 'results--' + dt_string + '.h5'
     shutil.move('/root/tensor/results/model_weights.h5', long_results_filename)
 
-    send_file(long_results_filename, short_results_filename)
+    send_file(long_results_filename)
     pass
 
 
-def send_file(longfilename, shortfilename):
+def send_file(longfilename):
     try:
         uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
         #myfile = {'file': open(file, 'rb')}
@@ -75,17 +75,14 @@ def send_file(longfilename, shortfilename):
 
         subprocess.run('/usr/bin/curl -F file=@' + longfilename + ' ' + uploadapiurl, shell=True )
 
-
-        if response.status_code == 201:
-            print('results file ' + file + ' successfully sent to dropoff pod')
-        else:
-            print('something went wrong, try again')
-        pass
-
     except Exception as e:
         print('There was a problem sending the file.')
         print(e)
         pass
+
+    print('Results sent back to dropoff pod.')
+    pass
+
 
 if __name__ == "__main__":
     main_loop()
