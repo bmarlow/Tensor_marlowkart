@@ -2,6 +2,7 @@ import os
 import urllib.request, requests, subprocess
 import shutil, kafka, logging, time, datetime
 
+
 def main_loop():
     files = []
     print('Streams initiated...')
@@ -11,7 +12,7 @@ def main_loop():
             for message in consumer_received:
                 str_message = bytes.decode(message.value)
                 print(str_message)
-                #if its stupid but it works...  well this is still stupid
+                # if its stupid but it works...  well this is still stupid
                 filename = str(str_message.split(': ')[1:])
                 filename = filename.replace("'", '')
                 filename = filename.replace('[', '')
@@ -24,6 +25,7 @@ def main_loop():
     except Exception as e:
         print('Stream timed out, restarting...')
         pass
+
 
 def get_files(files):
     for file in files:
@@ -45,22 +47,19 @@ def process_training_files(files):
     for file in files:
         shutil.move(dlpath + file, processingpath + file)
 
-
-    #for timestamping results file
+    # for timestamping results file
     now = datetime.datetime.now()
     dt_string = now.strftime("%d%m%Y-%H%M%S")
 
-    #issue ML commands
-    #####JUST A STUBOUT
+    # issue ML commands
     subprocess.run('/root/tensor/train.py', shell=True)
 
-    #delete old files
+    # delete old files
     os.remove('/root/tensor/data/X.npy')
     os.remove('/root/tensor/data/y.npy')
 
-    #move results file to results
+    # move results file to results
     long_results_filename = '/root/tensor/results/results--' + dt_string +'.h5'
-    short_results_filename = 'results--' + dt_string + '.h5'
     shutil.move('/root/tensor/results/model_weights.h5', long_results_filename)
 
     send_file(long_results_filename)
@@ -71,6 +70,7 @@ def send_file(longfilename):
     try:
         url = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
 
+        values = {'DB': 'photcat', 'OUT': 'csv', 'SHORT': 'short'}
         files = {'upload_file': open(longfilename, 'rb')}
         r = requests.post(url, files=files, data=values)
 
