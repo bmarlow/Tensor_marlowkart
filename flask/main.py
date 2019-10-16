@@ -74,8 +74,8 @@ def send_file(longfilename):
         files = {'file': open(longfilename, 'rb')}
         r = requests.post(url, files=files, data=values)
 
-        if r.status_code == '201':
-            print('Results sent to dropoff pod.')
+        if r.status_code == 201:
+            print('Results successfuly sent to dropoff pod.')
 
         else:
             print('File ' + longfilename + ' failed to send.')
