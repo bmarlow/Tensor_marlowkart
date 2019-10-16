@@ -89,6 +89,8 @@ def send_file(longfilename, shortfilename):
         pass
 
     except Exception as e:
+        print('There was a problem sending the file.')
+        print(e)
         pass
 
 if __name__ == "__main__":
