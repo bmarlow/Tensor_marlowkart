@@ -69,18 +69,24 @@ def process_training_files(files):
 
 def send_file(longfilename):
     try:
-        uploadapiurl = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
-        #myfile = {'file': open(file, 'rb')}
-        #response = requests.post(uploadapiurl, files=myfile)
+        url = 'http://dropoff-marlowkart.apps.koopa.hosted.labgear.io/api-upload'
 
-        subprocess.run('/usr/bin/curl -F file=@' + longfilename + ' ' + uploadapiurl, shell=True )
+        files = {'upload_file': open(longfilename, 'rb')}
+        r = requests.post(url, files=files, data=values)
+
+        if r.status_code == '201':
+            print('Results sent to dropoff pod.')
+
+        else:
+            print('File ' + longfilename + ' failed to send.')
+            print('Error content below...')
+            print(r.content)
 
     except Exception as e:
         print('There was a problem sending the file.')
         print(e)
         pass
 
-    print('Results sent back to dropoff pod.')
     pass
 
 
