@@ -57,7 +57,7 @@ if __name__ == '__main__':
     print(x_train.shape[0], 'train samples')
 
     # Training loop variables
-    epochs = 10
+    epochs = 5
     batch_size = 50
 
     model = create_model()
